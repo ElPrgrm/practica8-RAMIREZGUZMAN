@@ -1,0 +1,15 @@
+<table class="table table-sm">
+    <thead class="table-active">
+        <tr>
+            <th>Id</th>
+            <th>Postre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for postre in postres %}
+        <tr>
+            <td>{{ postre.idPostre }}</td>
+            <td>{{ postre.nombrePostre }}</td>
+        </tr>
+    </tbody>
+</table>
