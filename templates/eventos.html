@@ -11,14 +11,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="x in eventos">
-            <td scope="col">{{ x.idEvento }}</td>
-            <td scope="col">{{ x.nombreCliente }}</td>
-            <td scope="col">{{ x.descripcionUbicacion }}</td>
-            <td scope="col">{{ x.descripcionEvento }}</td>
-            <td scope="col">{{ x.fechaInicio }}</td>
-            <td scope="col">{{ x.fechaFin }}</td>
-            <td scope="col">{{ x.estado }}</td>
+        {% for evento in eventos %}
+        <tr>
+            <td>{{ evento.idEvento }}</td>
+            <td>{{ evento.nombreCliente }}</td>
+            <td>{{ evento.descripcionUbicacion }}</td>
+            <td>{{ evento.descripcionEvento }}</td>
+            <td>{{ evento.fechaInicio }}</td>
+            <td>{{ evento.fechaFin }}</td>
+            <td>{{ evento.estado }}</td>
         </tr>
     </tbody>
 </table>
