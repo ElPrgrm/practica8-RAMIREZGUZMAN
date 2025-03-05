@@ -9,35 +9,23 @@ function activeMenuOption(href) {
 }
 
 // Hay que modificarlo para el nombre de la aplicacion
-const app = angular.module("angularjsApp", ["ngRoute"])
+const app = angular.module("MimiApp", ["ngRoute"])
 app.config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix("")
 
     // y para las rutas
     $routeProvider
-    .when("/", {
+    .when("/inicio", {
         templateUrl: "/app",
         controller: "appCtrl"
     })
-    .when("/productos", {
-        templateUrl: "/productos",
-        controller: "productosCtrl"
+    .when("/clientes", {
+        templateUrl: "/clientes",
+        controller: "clientesCtrl"
     })
-    .when("/alumnos", {
-        templateUrl: "/alumnos",
-        controller: "alumnosCtrl"
-    })
-    .when("/ventas", {
-        templateUrl: "/ventas",
-        controller: "ventasCtrl"
-    })
-    .when("/reportes", {
-        templateUrl: "/reportes",
-        controller: "reportesCtrl"
-    })
-    .when("/notificaciones", {
-        templateUrl: "/notificaciones",
-        controller: "notificacionesCtrl"
+    .when("/eventos", {
+        templateUrl: "/eventos",
+        controller: "eventosCtrl"
     })
     .otherwise({
         redirectTo: "/"
@@ -56,6 +44,7 @@ app.run(["$rootScope", "$location", "$timeout", function($rootScope, $location, 
     $rootScope.slide = ""
 
     actualizarFechaHora()
+    activeMenuOption(location.hash)
 
     $rootScope.$on("$routeChangeSuccess", function (event, current, previous) {
         $("html").css("overflow-x", "hidden")
@@ -82,20 +71,15 @@ app.run(["$rootScope", "$location", "$timeout", function($rootScope, $location, 
     })
 }])
 
-// Hay que modificarlo para los controladores
+
 app.controller("appCtrl", function ($scope, $http) {
-    // alert("Hola, soy el controlador app")
+
 })
-app.controller("productosCtrl", function ($scope, $http) {
-    // alert("Hola, soy el controlador productos")
+app.controller("clientesCtrl", function ($scope, $http) {
+
 })
-app.controller("alumnosCtrl", function ($scope, $http) {
-})
-app.controller("ventasCtrl", function ($scope, $http) {
-})
-app.controller("reportesCtrl", function ($scope, $http) {
-})
-app.controller("notificacionesCtrl", function ($scope, $http) {
+app.controller("eventosCtrl", function ($scope, $http) {
+
 })
 
 const DateTime = luxon.DateTime
@@ -105,13 +89,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     const configFechaHora = {
         locale: "es",
         weekNumbers: true,
-        // enableTime: true,
         minuteIncrement: 15,
         altInput: true,
         altFormat: "d/F/Y",
         dateFormat: "Y-m-d",
-        // time_24hr: false
     }
-
-    activeMenuOption(location.hash)
 })
