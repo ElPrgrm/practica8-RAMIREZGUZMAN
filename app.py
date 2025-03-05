@@ -19,9 +19,9 @@ from flask_cors import CORS, cross_origin
 
 con = mysql.connector.connect(
     host="185.232.14.52",
-    database="u760464709_16005339_bd",
-    user="u760464709_16005339_usr",
-    password="/iJRzrJBz+P1"
+    database="u760464709_23005353_bd",
+    user="u760464709_23005353_usr",
+    password="O0h=DgE/"
 )
 
 app = Flask(__name__)
@@ -45,19 +45,17 @@ def app2():
 
     return "<h5>Hola, soy la view app</h5>";
 
-@app.route("/productos")
-def productos():
+@app.route("/postres")
+def postres():
     if not con.is_connected():
         con.reconnect()
 
     cursor = con.cursor(dictionary=True)
     sql    = """
-    SELECT Id_Producto,
-           Nombre_Producto,
-           Precio,
-           Existencias
+    SELECT idPostre,
+           nombrePostre
 
-    FROM productos
+    FROM postres
 
     LIMIT 10 OFFSET 0
     """
@@ -65,17 +63,66 @@ def productos():
     cursor.execute(sql)
     registros = cursor.fetchall()
 
-    # Si manejas fechas y horas
-    """
-    for registro in registros:
-        fecha_hora = registro["Fecha_Hora"]
+    return render_template("postres.html", productos=registros)
 
-        registro["Fecha_Hora"] = fecha_hora.strftime("%Y-%m-%d %H:%M:%S")
-        registro["Fecha"]      = fecha_hora.strftime("%d/%m/%Y")
-        registro["Hora"]       = fecha_hora.strftime("%H:%M:%S")
+@app.route("/ingredientes")
+def ingredientes():
+    if not con.is_connected():
+        con.reconnect()
+
+    cursor = con.cursor(dictionary=True)
+    sql    = """
+    SELECT idIngrediente,
+           nombreIngrediente,
+           existencias
+
+    FROM ingredientes
+
+    LIMIT 10 OFFSET 0
     """
 
-    return render_template("productos.html", productos=registros)
+    cursor.execute(sql)
+    registros = cursor.fetchall()
+
+    return render_template("ingredientes.html", productos=registros)
+
+@app.route("/postresingredientes")
+def postresingredientes():
+    if not con.is_connected():
+        con.reconnect()
+
+    cursor = con.cursor(dictionary=True)
+    sql    = """
+    SELECT postresingredientes.*, postres.nombrePostre, ingredientes.nombreIngrediente 
+        FROM postresingredientes
+        INNER JOIN postres ON postres.idPostre = postresingredientes.idPostre
+        INNER JOIN ingredientes ON ingredientes.idIngrediente = postresingredientes.idIngrediente
+
+    FROM postresingredientes
+
+    LIMIT 10 OFFSET 0
+    """
+
+    cursor.execute(sql)
+    registros = cursor.fetchall()
+
+    return render_template("postresingredientes.html", productos=registros)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route("/productos/buscar", methods=["GET"])
 def buscarProductos():
