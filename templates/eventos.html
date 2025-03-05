@@ -1,0 +1,24 @@
+<table class="table table-sm">
+    <thead class="table-active">
+        <tr>
+            <th>Id</th>
+            <th>Cliente</th>
+            <th>Ubicacion</th>
+            <th>Evento</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="x in eventos">
+            <td scope="col">{{ x.idEvento }}</td>
+            <td scope="col">{{ x.nombreCliente }}</td>
+            <td scope="col">{{ x.descripcionUbicacion }}</td>
+            <td scope="col">{{ x.descripcionEvento }}</td>
+            <td scope="col">{{ x.fechaInicio }}</td>
+            <td scope="col">{{ x.fechaFin }}</td>
+            <td scope="col">{{ x.estado }}</td>
+        </tr>
+    </tbody>
+</table>
