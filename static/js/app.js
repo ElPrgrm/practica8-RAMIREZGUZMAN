@@ -9,7 +9,7 @@ function activeMenuOption(href) {
 }
 
 // Hay que modificarlo para el nombre de la aplicacion
-const app = angular.module("angularjsApp", ["ngRoute"])
+const app = angular.module("MimiApp", ["ngRoute"])
 app.config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix("")
 
@@ -19,13 +19,17 @@ app.config(function ($routeProvider, $locationProvider) {
         templateUrl: "/app",
         controller: "appCtrl"
     })
-    .when("/clientes", {
-        templateUrl: "/clientes",
-        controller: "clientesCtrl"
+    .when("/postres", {
+        templateUrl: "/postres",
+        controller: "postresCtrl"
     })
-    .when("/eventos", {
-        templateUrl: "/eventos",
-        controller: "eventosCtrl"
+    .when("/ingredientes", {
+        templateUrl: "/ingredientes",
+        controller: "ingredientesCtrl"
+    })
+    .when("/postresingredientes", {
+        templateUrl: "/postresingredientes",
+        controller: "postresingredientesCtrl"
     })
     .otherwise({
         redirectTo: "/"
@@ -75,10 +79,13 @@ app.run(["$rootScope", "$location", "$timeout", function($rootScope, $location, 
 app.controller("appCtrl", function ($scope, $http) {
 
 })
-app.controller("clientesCtrl", function ($scope, $http) {
+app.controller("postresCtrl", function ($scope, $http) {
 
 })
-app.controller("eventosCtrl", function ($scope, $http) {
+app.controller("ingredientesCtrl", function ($scope, $http) {
+
+})
+app.controller("postresingredientesCtrl", function ($scope, $http) {
 
 })
 
