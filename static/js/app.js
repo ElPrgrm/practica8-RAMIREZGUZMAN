@@ -9,7 +9,7 @@ function activeMenuOption(href) {
 }
 
 // Hay que modificarlo para el nombre de la aplicacion
-const app = angular.module("MimiApp", ["ngRoute"])
+const app = angular.module("angularjsApp", ["ngRoute"])
 app.config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix("")
 
