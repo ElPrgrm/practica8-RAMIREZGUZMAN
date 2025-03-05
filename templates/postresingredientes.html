@@ -8,12 +8,13 @@
         </tr>
     </thead>
     <tbody>
-        {% for postreingrediente in postresingredientes %}
+        {% for postreingrediente in postreingredientes %}
         <tr>
-            <td>{{ postreingrediente.idPostreIngrediente }}</td>
+            <td>{{ postreingrediente.idPostreingrediente }}</td>
             <td>{{ postreingrediente.nombrePostre }}</td>
             <td>{{ postreingrediente.nombreIngrediente }}</td>
             <td>{{ postreingrediente.Cantidad }}</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
