@@ -15,7 +15,7 @@ app.config(function ($routeProvider, $locationProvider) {
 
     // y para las rutas
     $routeProvider
-    .when("/inicio", {
+    .when("/", {
         templateUrl: "/app",
         controller: "appCtrl"
     })
