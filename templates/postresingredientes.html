@@ -1,0 +1,19 @@
+<table class="table table-sm">
+    <thead class="table-active">
+        <tr>
+            <th>Id</th>
+            <th>Postre</th>
+            <th>Ingrediente</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for postreingrediente in postresingredientes %}
+        <tr>
+            <td>{{ postreingrediente.idPostreIngrediente }}</td>
+            <td>{{ postreingrediente.nombrePostre }}</td>
+            <td>{{ postreingrediente.nombreIngrediente }}</td>
+            <td>{{ postreingrediente.Cantidad }}</td>
+        </tr>
+    </tbody>
+</table>
